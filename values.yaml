@@ -25,8 +25,8 @@ expose:
     commonName: ""
   ingress:
     hosts:
-      core: core.harbor.domain
-      notary: notary.harbor.domain
+      core: core.layabox.com
+      notary: notary.layabox.com
     # set to the type of ingress controller if it has specific requirements.
     # leave as `default` for most ingress controllers.
     # set to `gce` if using the GCE ingress controller
@@ -114,19 +114,19 @@ persistence:
       # Specify the "storageClass" used to provision the volume. Or the default
       # StorageClass will be used(the default).
       # Set it to "-" to disable dynamic provisioning
-      storageClass: ""
+      storageClass: "rook-ceph-block"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 5Gi
     chartmuseum:
       existingClaim: ""
-      storageClass: ""
+      storageClass: "rook-ceph-block"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 5Gi
     jobservice:
       existingClaim: ""
-      storageClass: ""
+      storageClass: "rook-ceph-block"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
@@ -134,7 +134,7 @@ persistence:
     # be ignored
     database:
       existingClaim: ""
-      storageClass: ""
+      storageClass: "rook-ceph-block"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
@@ -142,7 +142,7 @@ persistence:
     # be ignored
     redis:
       existingClaim: ""
-      storageClass: ""
+      storageClass: "rook-ceph-block"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
@@ -435,7 +435,7 @@ database:
     tolerations: []
     affinity: {}
   external:
-    host: "192.168.0.1"
+    host: "192.168.0.108"
     port: "5432"
     username: "user"
     password: "password"
@@ -463,7 +463,7 @@ redis:
     tolerations: []
     affinity: {}
   external:
-    host: "192.168.0.2"
+    host: "192.168.0.108"
     port: "6379"
     # The "coreDatabaseIndex" must be "0" as the library Harbor
     # used doesn't support configuring it
