@@ -1,3 +1,4 @@
+{{- $persistence := .Values.persistence -}}
 {{- if eq .Values.database.type "internal" -}}
 {{- $database := .Values.persistence.persistentVolumeClaim.database -}}
 apiVersion: apps/v1
